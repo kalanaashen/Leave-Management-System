@@ -11,6 +11,10 @@ class CustomUserSerializer(serializers.ModelSerializer):
         model=CustomUser
         fields=['id','username','email','role']
     
+    def create(self,validated_data):
+        return CustomUser.objects.create_user(**validated_data)
+        
+        
     
 
 class SuperVisorSerializer(serializers.ModelSerializer):
@@ -60,5 +64,4 @@ class LeaveDateTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model=LeaveDateType
         fields="__all__"
-        
         
